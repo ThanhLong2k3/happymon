@@ -654,8 +654,8 @@ if (existsSync(distPath)) {
 const port = Number.parseInt(process.env.PORT || "3001", 10);
 async function start() {
   await verifyDatabase(database);
-  app.listen(port, "127.0.0.1", () => {
-    console.log(`HappyMon server listening on http://127.0.0.1:${port}`);
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`HappyMon server listening on http://0.0.0.0:${port}`);
   });
 }
 
