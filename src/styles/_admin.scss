@@ -1,0 +1,276 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.admin-layout-root {
+  --admin-table-height-offset: 390px;
+  --admin-dashboard-table-height-offset: 480px;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  background: #f4f7f4;
+  overflow: hidden;
+
+  > .ant-layout {
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .admin-sider {
+    background: #1c3629 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+    .admin-logo-box {
+      height: 64px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+      .logo-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: $color-yellow;
+        @include flex-center;
+        font-size: 18px;
+        color: $color-primary-dark;
+      }
+
+      .logo-title {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+
+        small {
+          display: block;
+          font-size: 10px;
+          color: #9eb6a8;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .ant-menu {
+      background: transparent !important;
+      border-inline-end: none !important;
+
+      .ant-menu-item {
+        color: #c9d6ce !important;
+        font-weight: 500;
+        margin-block: 4px;
+        border-radius: 8px;
+
+        &:hover {
+          color: #ffffff !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        &.ant-menu-item-selected {
+          background: $color-primary !important;
+          color: #ffffff !important;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .admin-header {
+    background: #ffffff !important;
+    padding: 0 24px !important;
+    height: 64px !important;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
+
+  .admin-content-body {
+    padding: 24px;
+    background: #f4f7f4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .admin-card-table {
+    border-radius: 12px;
+    box-shadow: $shadow-sm;
+    border: 1px solid $color-border;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .ant-card-head {
+      flex: 0 0 auto;
+      border-bottom: 1px solid $color-border-subtle;
+    }
+
+    .ant-card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .ant-table-wrapper {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      max-width: 100%;
+      min-height: 0;
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ant-pagination {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// Login Box
+.admin-login-screen {
+  min-height: 100vh;
+  padding: 16px;
+  @include flex-center;
+  background: radial-gradient(circle at 15% 15%, #e8f4ed 0%, #f6f3eb 70%);
+
+  .login-card {
+    width: min(420px, 100%);
+    border-radius: 16px;
+    box-shadow: $shadow-lg;
+    border: 1px solid $color-border;
+  }
+}
+
+@media (max-width: 991px) {
+  .admin-layout-root {
+    --admin-table-height-offset: 430px;
+    --admin-dashboard-table-height-offset: 620px;
+
+    .admin-sider .ant-layout-sider-zero-width-trigger {
+      top: 12px;
+      z-index: 20;
+    }
+
+    .admin-header {
+      height: auto !important;
+      min-height: 64px;
+      padding: 12px 16px 12px 56px !important;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+      line-height: normal;
+    }
+
+    .admin-header > .ant-typography {
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .admin-header > .ant-space {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .admin-card-table {
+      .ant-input-search {
+        max-width: 100% !important;
+      }
+    }
+  }
+
+  .admin-data-modal {
+    max-width: calc(100vw - 24px);
+    margin: 12px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-layout-root {
+    .admin-content-body {
+      padding: 16px;
+    }
+
+    .admin-card-table {
+      .ant-card-head-wrapper {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ant-card-extra {
+        margin-inline-start: 0;
+        padding: 0 0 12px;
+      }
+
+      .ant-card-body {
+        padding: 12px;
+      }
+    }
+
+    .admin-stats-row {
+      margin-bottom: 12px !important;
+
+      .ant-col {
+        display: flex;
+      }
+
+      .ant-card {
+        width: 100%;
+      }
+
+      .ant-card-body {
+        padding: 12px !important;
+      }
+
+      .ant-statistic-content-value {
+        font-size: 24px !important;
+      }
+    }
+  }
+
+  .admin-data-modal {
+    .ant-col {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-layout-root {
+    .admin-header {
+      padding: 10px 12px 10px 56px !important;
+    }
+
+    .admin-content-body {
+      padding: 10px;
+    }
+
+    .admin-card-table {
+      .ant-card-head {
+        padding: 0 12px;
+      }
+
+      .ant-card-body {
+        padding: 10px;
+      }
+    }
+  }
+}

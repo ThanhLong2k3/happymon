@@ -1,0 +1,33 @@
+{
+  "name": "happymon-rebuild",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "dev:client": "vite --host 127.0.0.1",
+    "dev:server": "node --watch server/index.js",
+    "db:import": "node scripts/migrate-normalized-db.js",
+    "db:migrate-registration": "node scripts/migrate-registration.js",
+    "db:migrate-store": "node scripts/migrate-store.js",
+    "build": "vite build",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "antd": "^6.7.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2",
+    "nodemailer": "^10.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.5",
+    "sass": "^1.108.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.5"
+  }
+}

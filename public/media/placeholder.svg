@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Happy Montessori</title>
+  <desc id="desc">Hình ảnh minh họa đang được cập nhật</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8effa"/>
+      <stop offset="1" stop-color="#e8f2eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="400" cy="205" r="82" fill="#fff" fill-opacity=".72"/>
+  <path d="M400 139c-32 36-30 68 0 84 30-16 32-48 0-84Zm-65 44c5 43 28 62 65 54 5-37-15-61-65-54Zm130 0c-50-7-70 17-65 54 37 8 60-11 65-54Z" fill="#a969b4"/>
+  <path d="M400 219v47" stroke="#73967d" stroke-width="8" stroke-linecap="round"/>
+  <text x="400" y="340" text-anchor="middle" fill="#5b3263" font-family="Arial, sans-serif" font-size="24" font-weight="700">HAPPY MONTESSORI</text>
+  <text x="400" y="375" text-anchor="middle" fill="#6b786e" font-family="Arial, sans-serif" font-size="16">Hình ảnh đang được cập nhật</text>
+</svg>
