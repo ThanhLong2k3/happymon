@@ -37,15 +37,15 @@ export default function Footer() {
                 <EnvironmentOutlined
                   style={{ color: "#e5bd61", marginRight: 8 }}
                 />{" "}
-                Lạc Hồng Phúc, P. Nhân Hòa, TX. Mỹ Hào, Hưng Yên
+                Số 3 Đường Bùi Thị Cúc, Mỹ Hào, Hưng Yên
               </div>
               <div>
                 <PhoneOutlined style={{ color: "#e5bd61", marginRight: 8 }} />{" "}
-                Hotline: <strong>098 563 88 55</strong>
+                Hotline: <strong>0961 348 219</strong>
               </div>
               <div>
                 <MailOutlined style={{ color: "#e5bd61", marginRight: 8 }} />{" "}
-                Email: tuyensinh@happymon.edu.vn
+                Email: happymon247@gmail.com
               </div>
             </Space>
           </Col>

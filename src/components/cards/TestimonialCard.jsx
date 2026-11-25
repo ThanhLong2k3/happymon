@@ -6,7 +6,7 @@ export default function TestimonialCard({ item }) {
     <div className="testimonial-item-card">
       <div className="author-row">
         <Avatar
-          size={52}
+          size={90}
           src={item.avatarUrl || item.featuredImage}
           icon={<UserOutlined />}
           className="author-avatar"

@@ -27,9 +27,9 @@ export default function SchoolIntroductionSection() {
             </Col>
             <Col xs={24} md={12}>
               <span className="eyebrow-tag">Không gian chuẩn bị</span>
-              <Title level={2} className="section-title">
+              <h1 level={2} className="section-title">
                 Một môi trường lý tưởng để con tự do khám phá thế giới
-              </Title>
+              </h1>
               <Paragraph className="section-desc">
                 Happy Montessori đồng hành cùng ba mẹ trong những năm đầu đời
                 quan trọng nhất. Từ giáo cụ trực quan đến các hoạt động thực

@@ -112,7 +112,7 @@ export default function EventCountdown() {
           <Title
             level={2}
             style={{
-              color: "#4d0057",
+              color: "#750285",
               fontSize: "clamp(24px, 4vw, 36px)",
               fontWeight: 800,
               marginBottom: 12,

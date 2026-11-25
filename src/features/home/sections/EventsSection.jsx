@@ -34,7 +34,7 @@ export default function EventsSection({ events = [] }) {
             </div>
             <HomeCardCarousel
               items={events}
-              className="home-card-track--content"
+              className="home-card-track--events"
               label="Hoạt động và sự kiện"
               renderCard={(item) => <ContentCard item={item} label="Sự kiện" />}
             />

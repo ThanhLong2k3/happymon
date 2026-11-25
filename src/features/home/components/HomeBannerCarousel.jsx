@@ -12,7 +12,7 @@ const slides = [
   { image: "/image_slide/Slide6.jpg", title: "Học qua trải nghiệm" },
 ];
 
-export default function HomeBannerCarousel() {
+export default function HomeBannerCarousel({ posts = [] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -36,6 +36,8 @@ export default function HomeBannerCarousel() {
     setCurrentSlide((current) => (current - 1 + slides.length) % slides.length);
   const showNext = () =>
     setCurrentSlide((current) => (current + 1) % slides.length);
+  const activePost = posts[currentSlide % posts.length];
+  const activeSlide = slides[currentSlide];
 
   return (
     <section
@@ -75,6 +77,16 @@ export default function HomeBannerCarousel() {
             học hỏi trong mỗi em bé theo phương pháp giáo dục Montessori chuẩn
             mực.
           </p>
+          <div className="hero-featured-post">
+            <span className="hero-featured-post__label">Tin tức nổi bật</span>
+            <Link
+              to={activePost ? `/bai-viet/${activePost.slug}` : "/bai-viet"}
+              className="hero-featured-post__link"
+            >
+              {activePost?.title || activeSlide.title}
+              <ArrowRightOutlined aria-hidden="true" />
+            </Link>
+          </div>
           <div className="hero-buttons">
             <Link to="/lien-he">
               <Button type="primary" size="large" shape="round">

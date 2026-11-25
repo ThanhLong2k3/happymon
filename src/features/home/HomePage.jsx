@@ -16,7 +16,7 @@ export default function HomePage({
 }) {
   return (
     <>
-      <HomeBannerCarousel />
+      <HomeBannerCarousel posts={posts} />
       <EducationValuesSection />
       <SchoolIntroductionSection />
       <TeachersSection teachers={teachers} />

@@ -2,12 +2,22 @@ import { Row, Col } from "antd";
 import { ContentCard } from "../components/Cards.jsx";
 import ContentPage from "./ContentPage.jsx";
 
-export default function ProgramPage({ contentItems = [], loading }) {
-  const courses = contentItems.filter((item) => item.type === "course");
+export default function ProgramPage({ contentItems = [], programs = [], loading }) {
+  const courses = contentItems
+    .filter((item) => item.type === "course")
+    .map((course) => {
+      const program = programs.find((entry) => entry.slug === course.slug);
+      return {
+        ...program,
+        ...course,
+        featuredImage: course.featuredImage || program?.featuredImage,
+      };
+    });
   return (
     <>
       <ContentPage
         contentItems={contentItems}
+        programs={programs}
         loading={loading}
         forcedSlug="chuong-trinh-montessori"
       />

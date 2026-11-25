@@ -11,9 +11,9 @@ export default function EducationValuesSection() {
           <Row gutter={[32, 24]}>
             <Col xs={24} md={6}>
               <span className="eyebrow-tag">Triết lý cốt lõi</span>
-              <Title level={3} style={{ color: "#4d0057", marginTop: 8 }}>
+              <h1 level={3} className="section-title">
                 Nuôi dưỡng những em bé hạnh phúc
-              </Title>
+              </h1>
             </Col>
             <Col xs={24} md={6}>
               <div

@@ -13,7 +13,7 @@ export default function BrandBar() {
         <Link to="/" className="brand-logo">
           <img
             className="brand-icon"
-            src="/media/2022/08/cropped-HappyMon-Logo-150.png"
+            src="/HappyMon.png"
             alt="Logo Trường Mầm non Happy Montessori"
             width="150"
             height="150"
@@ -25,17 +25,17 @@ export default function BrandBar() {
         </Link>
 
         <div className="brand-contact">
-          <a href="tel:0985638855" className="brand-contact-item">
+          <a href="tel:0961348219" className="brand-contact-item">
             <span className="brand-contact-icon">
               <PhoneOutlined />
             </span>
             <span>
               <small>Gọi cho chúng tôi</small>
-              <strong>098 563 88 55</strong>
+              <strong>0961 348 219</strong>
             </span>
           </a>
           <a
-            href="mailto:tuyensinh@happymon.edu.vn"
+            href="mailto:happymon247@gmail.com"
             className="brand-contact-item"
           >
             <span className="brand-contact-icon">
@@ -43,11 +43,11 @@ export default function BrandBar() {
             </span>
             <span>
               <small>Email</small>
-              <strong>tuyensinh@happymon.edu.vn</strong>
+              <strong>happymon247@gmail.com</strong>
             </span>
           </a>
-          <Link to="/lien-he" className="brand-visit-button">
-            <CalendarOutlined /> Đăng ký nhập học <ArrowRightOutlined />
+          <Link to="/lien-lac" className="brand-visit-button">
+            <CalendarOutlined /> Liên lạc với chúng tôi <ArrowRightOutlined />
           </Link>
         </div>
       </div>

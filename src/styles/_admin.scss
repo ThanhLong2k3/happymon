@@ -10,7 +10,7 @@
   height: 100vh;
   height: 100dvh;
   min-height: 100vh;
-  background: #f4f7f4;
+  background: #ffffff;
   overflow: hidden;
 
   > .ant-layout {
@@ -21,8 +21,8 @@
   }
 
   .admin-sider {
-    background: #1c3629 !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff !important;
+    border-right: 1px solid $color-border;
 
     .admin-logo-box {
       height: 64px;
@@ -30,20 +30,19 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid $color-border-subtle;
 
-      .logo-icon {
-        width: 34px;
-        height: 34px;
+      .logo-image {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        object-fit: contain;
         border-radius: 50%;
-        background: $color-yellow;
-        @include flex-center;
-        font-size: 18px;
-        color: $color-primary-dark;
+        background: #ffffff;
       }
 
       .logo-title {
-        color: #ffffff;
+        color: $color-primary-dark;
         font-size: 15px;
         font-weight: 800;
         letter-spacing: -0.02em;
@@ -52,7 +51,7 @@
         small {
           display: block;
           font-size: 10px;
-          color: #9eb6a8;
+          color: $color-text-muted;
           font-weight: 500;
         }
       }
@@ -63,19 +62,19 @@
       border-inline-end: none !important;
 
       .ant-menu-item {
-        color: #c9d6ce !important;
+        color: $color-text-main !important;
         font-weight: 500;
         margin-block: 4px;
         border-radius: 8px;
 
         &:hover {
-          color: #ffffff !important;
-          background: rgba(255, 255, 255, 0.08) !important;
+          color: $color-primary !important;
+          background: $color-primary-bg !important;
         }
 
         &.ant-menu-item-selected {
-          background: $color-primary !important;
-          color: #ffffff !important;
+          background: $color-primary-bg !important;
+          color: $color-primary-dark !important;
           font-weight: 700;
         }
       }
@@ -96,7 +95,7 @@
 
   .admin-content-body {
     padding: 24px;
-    background: #f4f7f4;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -149,7 +148,7 @@
   min-height: 100vh;
   padding: 16px;
   @include flex-center;
-  background: radial-gradient(circle at 15% 15%, #e8f4ed 0%, #f6f3eb 70%);
+  background: radial-gradient(circle at 15% 15%, #f5e8f7 0%, #ffffff 70%);
 
   .login-card {
     width: min(420px, 100%);

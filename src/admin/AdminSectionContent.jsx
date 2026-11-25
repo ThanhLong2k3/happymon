@@ -6,12 +6,14 @@ import PostsView from "./features/posts/PostsView.jsx";
 import ProductsView from "./features/products/ProductsView.jsx";
 import TestimonialsView from "./features/testimonials/TestimonialsView.jsx";
 import PromotionsView from "./features/promotions/PromotionsView.jsx";
+import ContactMessagesView from "./features/contacts/ContactMessagesView.jsx";
 
 export default function AdminSectionContent(props) {
   return (
     <>
       <DashboardView {...props} />
       <SubmissionsView {...props} />
+      <ContactMessagesView {...props} />
       <PromotionsView {...props} />
       <TeachersView {...props} />
       <ProgramsView {...props} />

@@ -15,6 +15,7 @@ import {
   GiftOutlined,
   GlobalOutlined,
   LogoutOutlined,
+  MailOutlined,
   PlusOutlined,
   ReadOutlined,
   ShoppingOutlined,
@@ -27,6 +28,7 @@ const { Header, Sider, Content } = Layout;
 const { Title, Text } = Typography;
 
 const pageTitles = {
+  contacts: "Qu\u1ea3n L\u00fd Li\u00ean h\u1ec7",
   dashboard: "Bảng Điều Khiển Trung Tâm",
   submissions: "Quản Lý Đăng Ký Tuyển Sinh",
   teachers: "Danh Sách Đội Ngũ Giáo Viên",
@@ -56,6 +58,7 @@ export default function AdminShell({
   children,
 }) {
   const menuItems = [
+    { key: "contacts", icon: <MailOutlined />, label: "Tin nhắn Liên hệ" },
     { key: "dashboard", icon: <DashboardOutlined />, label: "Tổng quan Dashboard" },
     {
       key: "submissions",
@@ -82,7 +85,7 @@ export default function AdminShell({
     <Layout className="admin-layout-root">
       <Sider width={260} className="admin-sider" breakpoint="lg" collapsedWidth="0">
         <div className="admin-logo-box">
-          <div className="logo-icon">🌱</div>
+          <img className="logo-image" src="/HappyMon.png" alt="Happy Montessori" />
           <div className="logo-title">
             HAPPY MON
             <small>Admin Portal</small>
@@ -103,7 +106,7 @@ export default function AdminShell({
             bottom: 20,
             left: 16,
             right: 16,
-            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "1px solid #eee3f0",
             paddingTop: 16,
           }}
         >
@@ -116,13 +119,13 @@ export default function AdminShell({
             }}
           >
             <Avatar
-              style={{ backgroundColor: "#e5bd61", color: "#203e30" }}
+              style={{ backgroundColor: "#e5bd61", color: "#4d0057" }}
               icon={<UserOutlined />}
             />
             <div style={{ overflow: "hidden" }}>
               <Text
                 style={{
-                  color: "#fff",
+                  color: "#342d36",
                   display: "block",
                   fontSize: 13,
                   fontWeight: 700,
@@ -131,7 +134,7 @@ export default function AdminShell({
               >
                 {adminUser?.fullName || "Admin"}
               </Text>
-              <Text style={{ color: "#8ca094", fontSize: 11 }} ellipsis>
+              <Text style={{ color: "#706876", fontSize: 11 }} ellipsis>
                 {adminUser?.email || "admin@happymon.edu.vn"}
               </Text>
             </div>
@@ -142,7 +145,7 @@ export default function AdminShell({
                 size="small"
                 type="text"
                 icon={<GlobalOutlined />}
-                style={{ color: "#a6b9ad" }}
+                style={{ color: "#625b68" }}
               >
                 Website ↗
               </Button>
@@ -162,7 +165,7 @@ export default function AdminShell({
 
       <Layout>
         <Header className="admin-header">
-          <Title level={4} style={{ margin: 0, color: "#203e30" }}>
+          <Title level={4} style={{ margin: 0, color: "#4d0057" }}>
             {pageTitles[activeMenu]}
           </Title>
           <Space>

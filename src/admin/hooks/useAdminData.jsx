@@ -46,6 +46,7 @@ export default function useAdminData({
 
       const loaders = {
         submissions: submissionsApi.listSubmissions,
+        contacts: submissionsApi.listSubmissions,
         teachers: teachersApi.listTeachers,
         programs: programsApi.listPrograms,
         posts: postsApi.listPosts,
@@ -55,6 +56,7 @@ export default function useAdminData({
       };
       const setters = {
         submissions: setSubmissions,
+        contacts: setSubmissions,
         teachers: setTeachers,
         programs: setPrograms,
         posts: setPosts,
@@ -113,6 +115,12 @@ export default function useAdminData({
     ]
   );
 
+  const filteredContacts = searchItems(
+    submissions.filter((submission) => submission.submissionType === "contact"),
+    searchTerms.contacts,
+    ["id", "name", "phone", "email", "message", "status", "notes"]
+  );
+
   const viewProps = {
     activeMenu,
     stats,
@@ -124,6 +132,7 @@ export default function useAdminData({
     submissionStatusFilter,
     setSubmissionStatusFilter,
     filteredSubmissions,
+    filteredContacts,
     filteredTeachers: searchItems(teachers, searchTerms.teachers, [
       "name",
       "slug",

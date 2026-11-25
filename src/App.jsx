@@ -21,6 +21,7 @@ import {
   StorePage,
 } from "./pages/index.js";
 import AdminDashboard from "./AdminDashboard.jsx";
+import ContactUsPage from "./pages/ContactUsPage.jsx";
 
 function useAppData() {
   const [data, setData] = useState({
@@ -120,6 +121,7 @@ export default function App() {
                 element={
                   <ProgramPage
                     contentItems={appData.contentItems}
+                    programs={appData.programs}
                     loading={appData.loading}
                   />
                 }
@@ -129,6 +131,7 @@ export default function App() {
                 element={
                   <ProgramPage
                     contentItems={appData.contentItems}
+                    programs={appData.programs}
                     loading={appData.loading}
                   />
                 }
@@ -137,7 +140,13 @@ export default function App() {
                 path="/hoat-dong"
                 element={
                   <ListingPage
-                    items={appData.contentItems}
+                    items={appData.events.map((event) => ({
+                      ...event,
+                      type: "event",
+                      date: event.eventDate,
+                      body: event.content,
+                      excerpt: event.summary,
+                    }))}
                     loading={appData.loading}
                     types={["event"]}
                     title="Hoạt động ngoại khóa của bé"
@@ -150,7 +159,11 @@ export default function App() {
                 path="/bai-viet"
                 element={
                   <ListingPage
-                    items={appData.contentItems}
+                    items={appData.posts.map((post) => ({
+                      ...post,
+                      type: "post",
+                      date: post.publishedAt,
+                    }))}
                     loading={appData.loading}
                     types={["post"]}
                     title="Góc chia sẻ & Tin tức"
@@ -164,6 +177,8 @@ export default function App() {
                 element={
                   <ContentPage
                     contentItems={appData.contentItems}
+                    events={appData.events}
+                    programs={appData.programs}
                     loading={appData.loading}
                     forcedSlug="gioi-thieu-ve-mam-non-happy-montessori"
                   />
@@ -174,18 +189,24 @@ export default function App() {
                 element={
                   <ContentPage
                     contentItems={appData.contentItems}
+                    events={appData.events}
+                    programs={appData.programs}
                     loading={appData.loading}
                     forcedSlug="thong-bao-tuyen-sinh"
                   />
                 }
               />
               <Route path="/lien-he" element={<ContactPage />} />
+              <Route path="/lien-lac" element={<ContactUsPage />} />
               <Route path="/cua-hang" element={<StorePage />} />
               <Route
                 path="/bai-viet/:slug"
                 element={
                   <ContentPage
                     contentItems={appData.contentItems}
+                    posts={appData.posts}
+                    events={appData.events}
+                    programs={appData.programs}
                     loading={appData.loading}
                   />
                 }
@@ -195,6 +216,9 @@ export default function App() {
                 element={
                   <ContentPage
                     contentItems={appData.contentItems}
+                    posts={appData.posts}
+                    events={appData.events}
+                    programs={appData.programs}
                     loading={appData.loading}
                   />
                 }
@@ -204,6 +228,9 @@ export default function App() {
                 element={
                   <ContentPage
                     contentItems={appData.contentItems}
+                    posts={appData.posts}
+                    events={appData.events}
+                    programs={appData.programs}
                     loading={appData.loading}
                   />
                 }

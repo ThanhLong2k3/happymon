@@ -4,10 +4,44 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const { Title, Paragraph } = Typography;
 
-export default function ContentPage({ contentItems = [], loading, forcedSlug }) {
+export default function ContentPage({
+  contentItems = [],
+  posts = [],
+  events = [],
+  programs = [],
+  loading,
+  forcedSlug,
+}) {
   const { slug: routeSlug } = useParams();
   const slug = routeSlug || forcedSlug;
-  const item = contentItems.find((entry) => entry.slug === slug);
+  const sourceItem = contentItems.find((entry) => entry.slug === slug);
+  const relatedData = sourceItem?.type === "post"
+    ? posts.find((entry) => entry.slug === slug)
+    : sourceItem?.type === "event"
+      ? events.find((entry) => entry.slug === slug)
+      : sourceItem?.type === "course"
+        ? programs.find((entry) => entry.slug === slug)
+        : null;
+  const item = sourceItem
+    ? {
+        ...relatedData,
+        ...sourceItem,
+        featuredImage: sourceItem.featuredImage || relatedData?.featuredImage,
+        body:
+          sourceItem.body || relatedData?.body || relatedData?.content || relatedData?.description,
+        date:
+          sourceItem.date || relatedData?.date || relatedData?.publishedAt || relatedData?.eventDate,
+      }
+    : sourceItem;
+  const postSource = posts.length > 0
+    ? posts
+    : contentItems.filter((entry) => entry.type === "post");
+  const recentPosts = item?.type === "post"
+    ? postSource
+        .filter((entry) => entry.slug !== item.slug)
+        .sort((a, b) => new Date(b.publishedAt || b.date || 0) - new Date(a.publishedAt || a.date || 0))
+        .slice(0, 10)
+    : [];
 
   if (loading)
     return (
@@ -36,7 +70,8 @@ export default function ContentPage({ contentItems = [], loading, forcedSlug }) 
 
   return (
     <div className="site-section">
-      <div className="site-container">
+      <div className={`site-container content-page-layout${recentPosts.length ? " content-page-layout--with-sidebar" : ""}`}>
+        <article className="content-page-article">
         {routeSlug && (
           <Link
             to={item.type === "event" ? "/hoat-dong" : "/bai-viet"}
@@ -121,6 +156,31 @@ export default function ContentPage({ contentItems = [], loading, forcedSlug }) 
             </Button>
           </Link>
         </div>
+        </article>
+        {recentPosts.length > 0 && (
+          <aside className="recent-posts-sidebar" aria-label="Tin tức gần đây">
+            <Title level={3}>Tin tức gần đây</Title>
+            <ol>
+              {recentPosts.map((post) => (
+                <li key={post.slug}>
+                  <Link to={`/bai-viet/${post.slug}`}>
+                    <img
+                      src={post.featuredImage || "/media/placeholder.svg"}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <span className="recent-posts-sidebar__title">{post.title}</span>
+                    {post.date && (
+                      <time dateTime={post.date}>
+                        {new Date(post.date.replace(" ", "T")).toLocaleDateString("vi-VN")}
+                      </time>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        )}
       </div>
     </div>
   );

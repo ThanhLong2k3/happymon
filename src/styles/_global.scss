@@ -93,6 +93,10 @@ a {
   margin: 0 0 12px;
 }
 
+.site-wrapper .ant-typography.section-title {
+  color: $color-primary-dark;
+}
+
 .section-desc {
   font-size: 15px;
   color: $color-text-muted;
