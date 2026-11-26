@@ -1,4 +1,5 @@
 import { Card, Tag, Typography } from "antd";
+import { toRichHtml } from "../../utils/richContent.js";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -48,9 +49,12 @@ export default function ProductCard({ product }) {
         <Title level={4} className="store-product-title">
           {product.name}
         </Title>
-        <Paragraph className="store-product-description">
-          {product.description || "Sản phẩm đồng phục Happy Montessori."}
-        </Paragraph>
+        <Paragraph
+          className="store-product-description rich-content"
+          dangerouslySetInnerHTML={{
+            __html: toRichHtml(product.description || "Sản phẩm đồng phục Happy Montessori."),
+          }}
+        />
         <Text strong className="store-product-price">
           {formatCurrency(product.price)}
         </Text>

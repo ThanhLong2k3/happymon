@@ -75,7 +75,7 @@ export default function Footer() {
             <div className="footer-col-title">Kết nối & Hoạt động</div>
             <ul className="footer-links">
               <li>
-                <Link to="/hoat-dong">Hoạt động ngoại khóa</Link>
+                <Link to="/hoat-dong">Sự kiện</Link>
               </li>
               <li>
                 <Link to="/cam-nhan">Góc chia sẻ của phụ huynh</Link>

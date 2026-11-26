@@ -19,7 +19,7 @@ export default function ProgramsView({ activeMenu, renderSearch, openModal, filt
                     dataIndex: "featuredImage",
                     width: 80,
                     render: (src) => (
-                      <img src={src || "/media/placeholder.svg"} alt="" style={{ width: 60, height: 40, objectFit: "cover", borderRadius: 6 }} />
+                      <img src={src || "/media/placeholder.svg"} alt="" style={{ width: 64, aspectRatio: "16 / 9", objectFit: "cover", borderRadius: 6 }} />
                     ),
                   },
                   {
@@ -47,7 +47,7 @@ export default function ProgramsView({ activeMenu, renderSearch, openModal, filt
                       <Space>
                         <Button
                           type="text"
-                          icon={<EditOutlined style={{ color: "#34664e" }} />}
+                          icon={<EditOutlined style={{ color: "#880099" }} />}
                           onClick={() => openModal("program", record)}
                         />
                         <Popconfirm

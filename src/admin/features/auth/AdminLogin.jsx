@@ -12,7 +12,7 @@ export default function AdminLogin({ loading, onLogin }) {
       <Card className="login-card">
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <span style={{ fontSize: 40, color: "#e5bd61" }}>🌱</span>
-          <Title level={3} style={{ color: "#203e30", margin: "8px 0 4px" }}>
+          <Title level={3} style={{ color: "#750285", margin: "8px 0 4px" }}>
             Happy Montessori
           </Title>
           <Text type="secondary">Cổng Quản Trị & Vận Hành Dữ Liệu</Text>
@@ -76,7 +76,7 @@ export default function AdminLogin({ loading, onLogin }) {
           >
             Chỉ dành cho nhân sự được cấp quyền quản trị.
           </Text>
-          <Link to="/" style={{ color: "#34664e", fontWeight: 600, fontSize: 14 }}>
+          <Link to="/" style={{ color: "#880099", fontWeight: 600, fontSize: 14 }}>
             ← Quay lại Website
           </Link>
         </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Row, Col, Spin } from "antd";
 import { ContentCard } from "../components/Cards.jsx";
+import EventCard from "../components/cards/EventCard.jsx";
 import CardPagination, {
   CARD_PAGE_SIZE,
   getPageItems,
@@ -30,7 +31,7 @@ export default function ListingPage({
   return (
     <div className="site-section">
       <div className="site-container">
-        <div style={{ maxWidth: 680, marginBottom: 40 }}>
+        <div className="page-heading">
           <span className="eyebrow-tag">Happy Montessori</span>
           <h1 className="section-title">{title}</h1>
           {description && <p className="section-desc">{description}</p>}
@@ -38,7 +39,11 @@ export default function ListingPage({
         <Row gutter={[24, 28]}>
           {visibleItems.map((item) => (
             <Col xs={24} sm={12} md={8} key={item.id}>
-              <ContentCard item={item} label={badgeLabel} />
+              {item.type === "event" ? (
+                <EventCard event={item} />
+              ) : (
+                <ContentCard item={item} label={badgeLabel} />
+              )}
             </Col>
           ))}
         </Row>

@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { Tag } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { richHtmlToText } from "../../utils/richContent.js";
 
 export default function ContentCard({ item, label, toPrefix = "/bai-viet" }) {
   const dateStr = item.date || item.publishedAt || item.eventDate;
+  const description = richHtmlToText(
+    item.excerpt || item.summary || richHtmlToText(item.body || "").slice(0, 140)
+  );
   const to =
     item.type === "event"
       ? `/hoat-dong/${item.slug}`
@@ -47,9 +51,7 @@ export default function ContentCard({ item, label, toPrefix = "/bai-viet" }) {
           <Link to={to}>{item.title}</Link>
         </h3>
         <p>
-          {item.excerpt ||
-            item.summary ||
-            (item.body ? item.body.slice(0, 140) : "")}
+          {description}
         </p>
         <Link
           to={to}

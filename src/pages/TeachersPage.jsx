@@ -24,12 +24,10 @@ export default function TeachersPage({ teachers = [], loading }) {
   return (
     <div className="site-section">
       <div className="site-container">
-        <div
-          style={{ textAlign: "center", maxWidth: 680, margin: "0 auto 48px" }}
-        >
+        <div className="page-heading">
           <span className="eyebrow-tag">Happy Montessori</span>
           <h1 className="section-title">Đội ngũ Giáo viên Tận tâm & Yêu trẻ</h1>
-          <p className="section-desc centered-copy">
+          <p className="section-desc">
             Đội ngũ giáo viên tại Happy Montessori là những người mẹ thứ hai của
             trẻ — giàu chuyên môn, giàu tình thương và luôn đồng hành cùng sự
             phát triển của từng bé.

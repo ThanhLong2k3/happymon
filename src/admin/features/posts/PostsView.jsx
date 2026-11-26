@@ -23,8 +23,8 @@ export default function PostsView({ activeMenu, renderSearch, openModal, filtere
                         src={src || "/media/placeholder.svg"}
                         alt="Ảnh bài viết"
                         style={{
-                          width: 60,
-                          height: 40,
+                          width: 64,
+                          aspectRatio: "16 / 9",
                           objectFit: "cover",
                           borderRadius: 6,
                         }}
@@ -49,7 +49,7 @@ export default function PostsView({ activeMenu, renderSearch, openModal, filtere
                     width: 120,
                     render: (_, record) => (
                       <Space>
-                        <Button type="text" icon={<EditOutlined style={{ color: "#34664e" }} />} onClick={() => openModal("post", record)} />
+                        <Button type="text" icon={<EditOutlined style={{ color: "#880099" }} />} onClick={() => openModal("post", record)} />
                         <Popconfirm title="Xác nhận xóa bài viết?" onConfirm={() => deletePost(record.id)}>
                           <Button danger type="text" icon={<DeleteOutlined />} />
                         </Popconfirm>

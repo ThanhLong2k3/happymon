@@ -38,6 +38,10 @@ export default function HomeBannerCarousel({ posts = [] }) {
     setCurrentSlide((current) => (current + 1) % slides.length);
   const activePost = posts[currentSlide % posts.length];
   const activeSlide = slides[currentSlide];
+  const activePostDescription =
+    activePost?.excerpt ||
+    activePost?.summary ||
+    activePost?.body?.replace(/\s+/g, " ").slice(0, 220);
 
   return (
     <section
@@ -68,34 +72,15 @@ export default function HomeBannerCarousel({ posts = [] }) {
         <div className="hero-copy">
           <span className="eyebrow-tag">Trường Mầm non Happy Montessori</span>
           <h1 className="hero-heading">
-            Nơi tuổi thơ
-            <br />
-            nở hoa <em>hạnh phúc</em>
+            {activePost?.title || activeSlide.title}
           </h1>
           <p className="hero-lead">
-            Tôn trọng sự khác biệt, nuôi dưỡng tính tự lập và khơi mở tình yêu
-            học hỏi trong mỗi em bé theo phương pháp giáo dục Montessori chuẩn
-            mực.
+            {activePostDescription || "Tôn trọng sự khác biệt, nuôi dưỡng tính tự lập và khơi mở tình yêu học hỏi theo phương pháp Montessori."}
           </p>
-          <div className="hero-featured-post">
-            <span className="hero-featured-post__label">Tin tức nổi bật</span>
-            <Link
-              to={activePost ? `/bai-viet/${activePost.slug}` : "/bai-viet"}
-              className="hero-featured-post__link"
-            >
-              {activePost?.title || activeSlide.title}
-              <ArrowRightOutlined aria-hidden="true" />
-            </Link>
-          </div>
           <div className="hero-buttons">
-            <Link to="/lien-he">
+            <Link to={activePost ? `/bai-viet/${activePost.slug}` : "/bai-viet"}>
               <Button type="primary" size="large" shape="round">
-                Đăng ký nhập học <ArrowRightOutlined />
-              </Button>
-            </Link>
-            <Link to="/chuong-trinh">
-              <Button size="large" shape="round">
-                Khám phá chương trình
+                {"Xem chi ti\u1ebft "}<ArrowRightOutlined />
               </Button>
             </Link>
           </div>
@@ -139,9 +124,7 @@ export default function HomeBannerCarousel({ posts = [] }) {
           />
         ))}
       </div>
-      <div className="hero-scroll-cue">
-        Khám phá Happy Montessori <span>↓</span>
-      </div>
+
     </section>
   );
 }

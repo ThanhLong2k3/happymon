@@ -24,12 +24,10 @@ export default function TestimonialsPage({ testimonials = [], loading }) {
   return (
     <div className="site-section">
       <div className="site-container">
-        <div
-          style={{ textAlign: "center", maxWidth: 680, margin: "0 auto 48px" }}
-        >
+        <div className="page-heading">
           <span className="eyebrow-tag">Chia sẻ chân thành</span>
           <h1 className="section-title">Cảm nhận từ các Gia đình Phụ huynh</h1>
-          <p className="section-desc centered-copy">
+          <p className="section-desc">
             Sự tin tưởng và an tâm của ba mẹ chính là động lực to lớn nhất để
             Happy Montessori không ngừng nỗ lực kiến tạo một ngôi trường hạnh
             phúc.

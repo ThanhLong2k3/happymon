@@ -70,7 +70,7 @@ export default function ProductsView({ activeMenu, renderSearch, openModal, filt
                       <Space>
                         <Button
                           type="text"
-                          icon={<EditOutlined style={{ color: "#34664e" }} />}
+                          icon={<EditOutlined style={{ color: "#880099" }} />}
                           onClick={() => openModal("product", record)}
                         />
                         <Popconfirm

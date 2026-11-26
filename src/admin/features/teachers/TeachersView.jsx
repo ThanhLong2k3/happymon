@@ -44,7 +44,7 @@ export default function TeachersView({ activeMenu, renderSearch, filteredTeacher
                     width: 120,
                     render: (_, record) => (
                       <Space>
-                        <Button type="text" icon={<EditOutlined style={{ color: "#34664e" }} />} onClick={() => openModal("teacher", record)} />
+                        <Button type="text" icon={<EditOutlined style={{ color: "#880099" }} />} onClick={() => openModal("teacher", record)} />
                         <Popconfirm title="Xác nhận xóa giáo viên này?" onConfirm={() => deleteTeacher(record.id)}>
                           <Button danger type="text" icon={<DeleteOutlined />} />
                         </Popconfirm>

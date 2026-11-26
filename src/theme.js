@@ -2,10 +2,10 @@ export const antdThemeConfig = {
   token: {
     colorPrimary: "#880099",
     colorInfo: "#880099",
-    colorSuccess: "#6d9c71",
+    colorSuccess: "#880099",
     colorWarning: "#e8b94f",
     colorError: "#cf222e",
-    colorTextBase: "#29362f",
+    colorTextBase: "#342d36",
     colorBgBase: "#ffffff",
     borderRadius: 8,
     fontFamily:
@@ -22,13 +22,21 @@ export const antdThemeConfig = {
       borderRadiusLG: 12,
     },
     Table: {
-      headerBg: "#f6f9f6",
-      headerColor: "#4d0057",
-      rowHoverBg: "#fcfdfc",
+      headerBg: "#f5e8f7",
+      headerColor: "#750285",
+      rowHoverBg: "#fcf9fd",
       borderRadius: 10,
     },
     Menu: {
       itemBorderRadius: 8,
+      itemSelectedBg: "#f5e8f7",
+      itemSelectedColor: "#750285",
+      itemHoverBg: "#f5e8f7",
+      itemHoverColor: "#880099",
+    },
+    Segmented: {
+      itemSelectedBg: "#f5e8f7",
+      itemSelectedColor: "#750285",
     },
     Tag: {
       borderRadiusSM: 6,

@@ -45,6 +45,8 @@ export default function AdminDashboard() {
     setProducts: data.setProducts,
     promotions: data.promotions,
     setPromotions: data.setPromotions,
+    events: data.events,
+    setEvents: data.setEvents,
   });
 
   if (!session.token) {

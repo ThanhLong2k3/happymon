@@ -1,7 +1,7 @@
 import { Col, Form, Input, InputNumber, Row } from "antd";
 import ImageUploadField from "../../shared/components/ImageUploadField.jsx";
+import RichTextEditor from "../../shared/components/RichTextEditor.jsx";
 
-const { TextArea } = Input;
 export default function TeacherFormFields({ modalType, token, adminFetch }) {
   return (
     <>
@@ -44,7 +44,7 @@ export default function TeacherFormFields({ modalType, token, adminFetch }) {
                 </Col>
               </Row>
               <Form.Item name="bio" label="Tiểu sử / Quá trình công tác">
-                <TextArea rows={3} placeholder="Mô tả quá trình đào tạo và kinh nghiệm..." />
+                <RichTextEditor token={token} apiFetch={adminFetch} />
               </Form.Item>
             </>
           )}

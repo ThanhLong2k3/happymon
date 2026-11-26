@@ -1,10 +1,8 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row } from "antd";
 import EnrollmentForm from "./EnrollmentForm.jsx";
 import EnrollmentHero from "./EnrollmentHero.jsx";
 import EnrollmentPaymentModal from "./EnrollmentPaymentModal.jsx";
 import useEnrollmentRegistration from "./useEnrollmentRegistration.js";
-
-const { Paragraph, Title } = Typography;
 
 export default function EnrollmentRegistration() {
   const {
@@ -25,13 +23,13 @@ export default function EnrollmentRegistration() {
   return (
     <section className="site-section enrollment-section" id="registration">
       <div className="site-container">
-        <div className="enrollment-heading">
+        <div className="enrollment-heading page-heading">
           <span className="eyebrow-tag">Bắt đầu hành trình cùng Happy</span>
-          <Title level={2}>Đăng ký nhập học</Title>
-          <Paragraph className="centered-copy">
+          <h1 className="section-title">Đăng ký nhập học</h1>
+          <p className="section-desc">
             Ba mẹ điền thông tin đăng ký nhập học cho bé. Bộ phận tuyển sinh sẽ
             liên hệ hướng dẫn hoàn thiện hồ sơ.
-          </Paragraph>
+          </p>
         </div>
 
         <Row gutter={[28, 28]} align="stretch">

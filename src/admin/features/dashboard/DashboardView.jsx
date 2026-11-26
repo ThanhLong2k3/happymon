@@ -18,7 +18,7 @@ export default function DashboardView({
       <Card
         className="admin-card-table"
         title={
-          <span style={{ fontWeight: 700, color: "#203e30" }}>
+          <span style={{ fontWeight: 700, color: "#750285" }}>
             Đăng ký tuyển sinh gần nhất
           </span>
         }
@@ -45,7 +45,7 @@ export default function DashboardView({
               render: (p) => (
                 <a
                   href={`tel:${p}`}
-                  style={{ color: "#34664e", fontWeight: 600 }}
+                  style={{ color: "#880099", fontWeight: 600 }}
                 >
                   {p}
                 </a>
@@ -75,7 +75,7 @@ export default function DashboardView({
                     st === "new"
                       ? "red"
                       : st === "contacted"
-                        ? "blue"
+                        ? "purple"
                         : st === "scheduled"
                           ? "orange"
                           : "green"

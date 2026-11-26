@@ -251,7 +251,7 @@
   }
 
   .hero-heading {
-    font-size: clamp(40px, 5.2vw, 68px);
+    font-size: clamp(34px, 4.3vw, 56px);
     font-weight: 900;
     color: #ffffff;
     line-height: 1.08;
@@ -369,7 +369,7 @@
     }
 
     .hero-heading {
-      font-size: clamp(38px, 11vw, 54px);
+      font-size: clamp(32px, 8vw, 44px);
     }
 
     .hero-lead {
@@ -642,13 +642,9 @@
   background: linear-gradient(135deg, #fcf7fd 0%, #f8effa 100%);
 
   .enrollment-heading {
-    max-width: 720px;
-    margin: 0 auto 36px;
-    text-align: center;
-
-    .ant-typography {
-      color: #4d0057;
-    }
+    max-width: 780px;
+    margin: 0 0 36px;
+    text-align: left;
 
     p {
       color: $color-text-muted;
@@ -662,6 +658,16 @@
     border: 1px solid #ead8ee;
     border-radius: 20px;
     box-shadow: 0 14px 36px rgba(77, 0, 87, 0.08);
+
+    .enrollment-form-section-title.ant-typography {
+      margin: 8px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $color-border-subtle;
+      color: $color-primary-dark;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
 
     .ant-card-body {
       padding: 28px;
@@ -873,7 +879,7 @@
   }
 
   .card-media {
-    height: 190px;
+    aspect-ratio: 16 / 9;
     background: #f5e8f7;
     position: relative;
     overflow: hidden;
@@ -920,6 +926,65 @@
       flex: 1;
     }
   }
+}
+
+.events-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 767px) {
+  .events-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.event-item-card {
+  .card-details {
+    .event-status-tag {
+      align-self: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .event-card-meta {
+      display: grid;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: $color-text-muted;
+      font-size: 12px;
+
+      span {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
+    .event-card-detail {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      color: $color-primary;
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+}
+
+.event-detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: $color-text-muted;
+  font-size: 14px;
 }
 
 // Parent Testimonial Card
@@ -1187,6 +1252,25 @@
   }
 }
 
+.page-heading {
+  max-width: 780px;
+  margin-bottom: 40px;
+
+  .section-title {
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    max-width: 760px;
+    margin-bottom: 0;
+  }
+}
+
+.content-page-title {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
 .store-loading {
   display: flex;
   justify-content: center;
@@ -1246,6 +1330,18 @@
   -webkit-line-clamp: 2;
 }
 
+.store-product-description.rich-content {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .store-product-price.ant-typography {
   color: #880099;
   font-size: 19px;
@@ -1301,7 +1397,7 @@
   padding: 28px;
   border: 1px solid $color-border;
   border-radius: 20px;
-  background: #ffffff;
+  background: #f5e8f7;
   box-shadow: $shadow-sm;
 }
 
@@ -1340,7 +1436,7 @@
 
 .contact-us-form-panel {
   padding: 32px;
-  background: #f0f8f5;
+  background: #f5e8f7;
 
   h2 {
     margin: 0 0 24px;
@@ -1373,6 +1469,48 @@
   gap: 36px;
 }
 
+.rich-content {
+  font-size: 16px;
+  line-height: 1.9;
+  color: $color-text-main;
+
+  p {
+    margin: 0 0 20px;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin: 28px 0 12px;
+    color: $color-primary-dark;
+    line-height: 1.35;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 20px;
+    padding-left: 28px;
+  }
+
+  blockquote {
+    margin: 20px 0;
+    padding-left: 16px;
+    border-left: 3px solid $color-primary-light;
+    color: $color-text-muted;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: $radius-md;
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
 .content-page-article {
   min-width: 0;
 }
@@ -1389,7 +1527,8 @@
   .ant-typography {
     margin: 0 0 16px;
     color: $color-primary-dark;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 800;
   }
 
   ol {
@@ -1412,7 +1551,7 @@
 
   img {
     width: 100%;
-    height: 112px;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 10px;
   }

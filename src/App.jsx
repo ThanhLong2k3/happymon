@@ -149,9 +149,8 @@ export default function App() {
                     }))}
                     loading={appData.loading}
                     types={["event"]}
-                    title="Hoạt động ngoại khóa của bé"
-                    description="Những khoảnh khắc học tập, vui chơi và trải nghiệm bổ ích tại trường Happy Montessori."
-                    badgeLabel="Hoạt động"
+                    title="Sự kiện tại Happy Montessori"
+                    description="Cập nhật thời gian, địa điểm và thông tin mới nhất về các sự kiện của trường."
                   />
                 }
               />

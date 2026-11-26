@@ -58,7 +58,7 @@ export function getSubmissionTableColumns({
       title: "Điện thoại",
       dataIndex: "phone",
       render: (p) => (
-        <a href={`tel:${p}`} style={{ color: "#34664e", fontWeight: 700 }}>
+        <a href={`tel:${p}`} style={{ color: "#880099", fontWeight: 700 }}>
           <PhoneOutlined /> {p}
         </a>
       ),
@@ -149,7 +149,7 @@ export function getSubmissionTableColumns({
           onChange={(val) => updateStatus(record.id, val)}
           options={[
             { value: "new", label: <Tag color="red">Mới nhận</Tag> },
-            { value: "contacted", label: <Tag color="blue">Đã liên hệ</Tag> },
+            { value: "contacted", label: <Tag color="purple">Đã liên hệ</Tag> },
             {
               value: "scheduled",
               label: <Tag color="orange">Đã hẹn làm hồ sơ</Tag>,

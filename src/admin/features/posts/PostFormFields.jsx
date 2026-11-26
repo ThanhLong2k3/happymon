@@ -1,5 +1,6 @@
 import { Col, Form, Input, Row, Select } from "antd";
 import ImageUploadField from "../../shared/components/ImageUploadField.jsx";
+import RichTextEditor from "../../shared/components/RichTextEditor.jsx";
 
 const { TextArea } = Input;
 export default function PostFormFields({ modalType, token, adminFetch }) {
@@ -35,7 +36,7 @@ export default function PostFormFields({ modalType, token, adminFetch }) {
                 <TextArea rows={2} />
               </Form.Item>
               <Form.Item name="body" label="Nội dung chi tiết" rules={[{ required: true, message: "Vui lòng nhập nội dung" }]}>
-                <TextArea rows={7} />
+                <RichTextEditor token={token} apiFetch={adminFetch} />
               </Form.Item>
             </>
           )}

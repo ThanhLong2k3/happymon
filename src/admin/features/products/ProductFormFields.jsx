@@ -1,7 +1,7 @@
 import { Col, Form, Input, InputNumber, Row, Select } from "antd";
 import ImageUploadField from "../../shared/components/ImageUploadField.jsx";
+import RichTextEditor from "../../shared/components/RichTextEditor.jsx";
 
-const { TextArea } = Input;
 export default function ProductFormFields({ modalType, token, adminFetch }) {
   return (
     <>
@@ -68,7 +68,7 @@ export default function ProductFormFields({ modalType, token, adminFetch }) {
                 <ImageUploadField token={token} apiFetch={adminFetch} />
               </Form.Item>
               <Form.Item name="description" label="Mô tả sản phẩm">
-                <TextArea rows={4} maxLength={10000} />
+                <RichTextEditor token={token} apiFetch={adminFetch} />
               </Form.Item>
             </>
           )}

@@ -7,6 +7,8 @@ import ProductsView from "./features/products/ProductsView.jsx";
 import TestimonialsView from "./features/testimonials/TestimonialsView.jsx";
 import PromotionsView from "./features/promotions/PromotionsView.jsx";
 import ContactMessagesView from "./features/contacts/ContactMessagesView.jsx";
+import EventsView from "./features/events/EventsView.jsx";
+import ManagedPageView from "./features/pages/ManagedPageView.jsx";
 
 export default function AdminSectionContent(props) {
   return (
@@ -18,6 +20,8 @@ export default function AdminSectionContent(props) {
       <TeachersView {...props} />
       <ProgramsView {...props} />
       <PostsView {...props} />
+      <EventsView {...props} />
+      <ManagedPageView {...props} />
       <ProductsView {...props} />
       <TestimonialsView {...props} />
     </>

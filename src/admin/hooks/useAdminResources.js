@@ -6,6 +6,7 @@ import * as programsApi from "../features/programs/api.js";
 import * as teachersApi from "../features/teachers/api.js";
 import * as testimonialsApi from "../features/testimonials/api.js";
 import * as promotionsApi from "../features/promotions/api.js";
+import * as eventsApi from "../features/events/api.js";
 
 const saveByType = {
   teacher: teachersApi.saveTeacher,
@@ -14,6 +15,7 @@ const saveByType = {
   testimonial: testimonialsApi.saveTestimonial,
   product: productsApi.saveProduct,
   promotion: promotionsApi.savePromotion,
+  event: eventsApi.saveEvent,
 };
 
 export default function useAdminResources({
@@ -32,6 +34,8 @@ export default function useAdminResources({
   setProducts,
   promotions,
   setPromotions,
+  events,
+  setEvents,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState(null);
@@ -46,7 +50,9 @@ export default function useAdminResources({
 
     if (item) {
       form.setFieldsValue(
-        type === "product"
+        type === "event"
+          ? { ...item, eventDate: item.eventDate?.replace(" ", "T").slice(0, 16) }
+          : type === "product"
           ? {
               ...item,
               price: Number(item.price),
@@ -87,6 +93,7 @@ export default function useAdminResources({
         tier2: "Tặng bộ đồng phục và balo Happy",
         tier3: "Miễn 100% phí cơ sở vật chất năm đầu",
       },
+      event: { location: "Trường Mầm non Happy Montessori" },
     };
     form.setFieldsValue(initialValuesByType[type] || {});
   }
@@ -168,6 +175,15 @@ export default function useAdminResources({
       readErrorResponse: true,
     });
 
+  const deleteEvent = (id) =>
+    removeResource({
+      remove: eventsApi.removeEvent,
+      id,
+      setItems: setEvents,
+      errorMessage: "Xóa sự kiện thất bại.",
+      successMessage: "Đã xóa sự kiện.",
+    });
+
   async function handleModalSubmit(values) {
     try {
       const save = saveByType[modalType];
@@ -194,6 +210,7 @@ export default function useAdminResources({
       deleteTestimonial,
       deleteProduct,
       deletePromotion,
+      deleteEvent,
     },
     modalProps: {
       modalType,

@@ -6,5 +6,5 @@ export const navigationItems = [
   { label: "G\u00f3c ph\u1ee5 huynh", to: "/cam-nhan" },
   { label: "Tuy\u1ec3n sinh", to: "/tuyen-sinh" },
   { label: "Tin t\u1ee9c", to: "/bai-viet" },
-  { label: "Ho\u1ea1t \u0111\u1ed9ng", to: "/hoat-dong" },
+  { label: "S\u1ef1 ki\u1ec7n", to: "/hoat-dong" },
 ];

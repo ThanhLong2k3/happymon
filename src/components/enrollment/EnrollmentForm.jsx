@@ -21,7 +21,9 @@ export default function EnrollmentForm({
         onFinish={onSubmit}
         requiredMark="optional"
       >
-        <Title level={4}>Thông tin phụ huynh</Title>
+        <Title level={4} className="enrollment-form-section-title">
+          Thông tin phụ huynh
+        </Title>
         <Row gutter={16}>
           <Col xs={24} sm={12}>
             <Form.Item
@@ -98,7 +100,9 @@ export default function EnrollmentForm({
           </Col>
         </Row>
 
-        <Title level={4}>Thông tin của bé</Title>
+        <Title level={4} className="enrollment-form-section-title">
+          Thông tin của bé
+        </Title>
         <Row gutter={16}>
           <Col xs={24} sm={12}>
             <Form.Item

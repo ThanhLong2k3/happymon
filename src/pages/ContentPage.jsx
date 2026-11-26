@@ -1,6 +1,12 @@
 import { useParams, Link } from "react-router-dom";
-import { Typography, Button, Spin } from "antd";
+import { Typography, Button, Spin, Tag } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import {
+  eventStatusLabels,
+  formatEventDate,
+  getEventStatus,
+} from "../components/events/eventUtils.js";
+import { toRichHtml } from "../utils/richContent.js";
 
 const { Title, Paragraph } = Typography;
 
@@ -14,7 +20,15 @@ export default function ContentPage({
 }) {
   const { slug: routeSlug } = useParams();
   const slug = routeSlug || forcedSlug;
-  const sourceItem = contentItems.find((entry) => entry.slug === slug);
+  const contentSourceItem = contentItems.find((entry) => entry.slug === slug);
+  const eventSourceItem = events.find((entry) => entry.slug === slug);
+  const sourceItem = contentSourceItem || (eventSourceItem && {
+    ...eventSourceItem,
+    type: "event",
+    date: eventSourceItem.eventDate,
+    excerpt: eventSourceItem.summary,
+    body: eventSourceItem.content,
+  });
   const relatedData = sourceItem?.type === "post"
     ? posts.find((entry) => entry.slug === slug)
     : sourceItem?.type === "event"
@@ -26,9 +40,17 @@ export default function ContentPage({
     ? {
         ...relatedData,
         ...sourceItem,
-        featuredImage: sourceItem.featuredImage || relatedData?.featuredImage,
+        title: sourceItem.type === "event" ? relatedData?.title || sourceItem.title : sourceItem.title,
+        location: sourceItem.type === "event" ? relatedData?.location || sourceItem.location : sourceItem.location,
+        eventDate: sourceItem.type === "event" ? relatedData?.eventDate || sourceItem.eventDate : sourceItem.eventDate,
+        summary: sourceItem.type === "event" ? relatedData?.summary || sourceItem.summary : sourceItem.summary,
+        featuredImage: sourceItem.type === "event"
+          ? relatedData?.featuredImage || sourceItem.featuredImage
+          : sourceItem.featuredImage || relatedData?.featuredImage,
         body:
-          sourceItem.body || relatedData?.body || relatedData?.content || relatedData?.description,
+          sourceItem.type === "event"
+            ? relatedData?.content || sourceItem.body || relatedData?.body
+            : sourceItem.body || relatedData?.body || relatedData?.content || relatedData?.description,
         date:
           sourceItem.date || relatedData?.date || relatedData?.publishedAt || relatedData?.eventDate,
       }
@@ -66,7 +88,7 @@ export default function ContentPage({
     );
   }
 
-  const paragraphs = item.body ? item.body.split(/\n{2,}/).filter(Boolean) : [];
+  const richBody = toRichHtml(item.body || item.summary || "");
 
   return (
     <div className="site-section">
@@ -86,15 +108,23 @@ export default function ContentPage({
           </Link>
         )}
         <span className="eyebrow-tag">
-          {item.type === "event" ? "Hoạt động ngoại khóa" : "Happy Montessori"}
+          {item.type === "event" ? "Sự kiện" : "Happy Montessori"}
         </span>
-        <Title
-          level={1}
-          style={{ color: "#4d0057", marginTop: 8, marginBottom: 16 }}
-        >
+        <h1 className="section-title content-page-title">
           {item.title}
-        </Title>
-        {item.date && (
+        </h1>
+        {item.type === "event" && (
+          <div className="event-detail-meta">
+            <Tag color={{ upcoming: "blue", ongoing: "green", completed: "default", unknown: "default" }[getEventStatus(item.eventDate || item.date)]}>
+              {eventStatusLabels[getEventStatus(item.eventDate || item.date)]}
+            </Tag>
+            <time dateTime={item.eventDate || item.date || undefined}>
+              {formatEventDate(item.eventDate || item.date)}
+            </time>
+            <span>{item.location || "Chưa cập nhật địa điểm"}</span>
+          </div>
+        )}
+        {item.type !== "event" && item.date && (
           <div style={{ color: "#8a968e", fontSize: 13, marginBottom: 24 }}>
             Ngày đăng: {item.date.slice(0, 10)}
           </div>
@@ -117,13 +147,7 @@ export default function ContentPage({
           />
         )}
 
-        <div style={{ fontSize: 16, lineHeight: 1.9, color: "#455349" }}>
-          {paragraphs.map((p, i) => (
-            <p key={i} style={{ marginBottom: 20 }}>
-              {p}
-            </p>
-          ))}
-        </div>
+        <div className="rich-content" dangerouslySetInnerHTML={{ __html: richBody }} />
 
         <div
           style={{

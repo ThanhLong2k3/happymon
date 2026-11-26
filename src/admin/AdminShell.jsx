@@ -9,11 +9,15 @@ import {
   Typography,
 } from "antd";
 import {
+  AppstoreOutlined,
   CommentOutlined,
   DashboardOutlined,
+  CalendarOutlined,
   FileTextOutlined,
+  FormOutlined,
   GiftOutlined,
   GlobalOutlined,
+  InfoCircleOutlined,
   LogoutOutlined,
   MailOutlined,
   PlusOutlined,
@@ -37,6 +41,9 @@ const pageTitles = {
   testimonials: "Cảm Nhận Từ Phụ Huynh Học Sinh",
   products: "Quản Lý Sản Phẩm Đồng Phục",
   promotions: "Quản Lý Chiến Dịch Tuyển Sinh & Ưu Đãi",
+  events: "Quản Lý Sự Kiện",
+  aboutPage: "Nội Dung Trang Giới Thiệu",
+  enrollmentPage: "Nội Dung Trang Tuyển Sinh",
 };
 
 const createActions = {
@@ -46,6 +53,7 @@ const createActions = {
   testimonials: { label: "Thêm cảm nhận", type: "testimonial" },
   products: { label: "Thêm sản phẩm", type: "product" },
   promotions: { label: "Thêm ưu đãi mới", type: "promotion" },
+  events: { label: "Thêm sự kiện", type: "event" },
 };
 
 export default function AdminShell({
@@ -58,27 +66,63 @@ export default function AdminShell({
   children,
 }) {
   const menuItems = [
-    { key: "contacts", icon: <MailOutlined />, label: "Tin nhắn Liên hệ" },
-    { key: "dashboard", icon: <DashboardOutlined />, label: "Tổng quan Dashboard" },
+    { key: "dashboard", icon: <DashboardOutlined />, label: "Tổng quan" },
     {
-      key: "submissions",
-      icon: <SolutionOutlined />,
-      label: (
-        <span>
-          Đăng ký Tuyển sinh{" "}
-          {stats?.newSubmissions > 0 && (
-            <Badge count={stats.newSubmissions} offset={[6, 0]} />
-          )}
-        </span>
-      ),
+      key: "websiteContent",
+      icon: <AppstoreOutlined />,
+      label: "Nội dung website",
+      children: [
+        { key: "posts", icon: <FileTextOutlined />, label: "Bài viết & Tin tức" },
+        { key: "events", icon: <CalendarOutlined />, label: "Sự kiện" },
+        { key: "aboutPage", icon: <InfoCircleOutlined />, label: "Trang Giới thiệu" },
+        { key: "enrollmentPage", icon: <FormOutlined />, label: "Trang Tuyển sinh" },
+      ],
     },
-    { key: "promotions", icon: <GiftOutlined />, label: "Ưu đãi Tuyển sinh" },
-    { key: "teachers", icon: <TeamOutlined />, label: "Đội ngũ Giáo viên" },
-    { key: "programs", icon: <ReadOutlined />, label: "Chương trình & CLB" },
-    { key: "posts", icon: <FileTextOutlined />, label: "Bài viết & Tin tức" },
-    { key: "testimonials", icon: <CommentOutlined />, label: "Cảm nhận Phụ huynh" },
-    { key: "products", icon: <ShoppingOutlined />, label: "Sản phẩm đồng phục" },
+    {
+      key: "admissions",
+      icon: <SolutionOutlined />,
+      label: "Tuyển sinh",
+      children: [
+        {
+          key: "submissions",
+          icon: <SolutionOutlined />,
+          label: (
+            <span>
+              Đăng ký nhập học{" "}
+              {stats?.newSubmissions > 0 && (
+                <Badge count={stats.newSubmissions} offset={[6, 0]} />
+              )}
+            </span>
+          ),
+        },
+        { key: "promotions", icon: <GiftOutlined />, label: "Ưu đãi tuyển sinh" },
+      ],
+    },
+    {
+      key: "school",
+      icon: <TeamOutlined />,
+      label: "Nhà trường",
+      children: [
+        { key: "teachers", icon: <TeamOutlined />, label: "Đội ngũ giáo viên" },
+        { key: "programs", icon: <ReadOutlined />, label: "Chương trình & CLB" },
+        { key: "testimonials", icon: <CommentOutlined />, label: "Cảm nhận phụ huynh" },
+        { key: "products", icon: <ShoppingOutlined />, label: "Sản phẩm đồng phục" },
+      ],
+    },
+    { key: "contacts", icon: <MailOutlined />, label: "Tin nhắn Liên hệ" },
   ];
+  const selectedGroup = {
+    posts: "websiteContent",
+    events: "websiteContent",
+    aboutPage: "websiteContent",
+    enrollmentPage: "websiteContent",
+    submissions: "admissions",
+    promotions: "admissions",
+    teachers: "school",
+    programs: "school",
+    testimonials: "school",
+    products: "school",
+  }[activeMenu];
   const createAction = createActions[activeMenu];
 
   return (
@@ -95,6 +139,7 @@ export default function AdminShell({
         <Menu
           mode="inline"
           selectedKeys={[activeMenu]}
+          defaultOpenKeys={selectedGroup ? [selectedGroup] : []}
           onClick={({ key }) => onMenuChange(key)}
           items={menuItems}
           style={{ marginTop: 16, padding: "0 8px" }}
@@ -165,7 +210,7 @@ export default function AdminShell({
 
       <Layout>
         <Header className="admin-header">
-          <Title level={4} style={{ margin: 0, color: "#4d0057" }}>
+          <Title level={4} style={{ margin: 0, color: "#750285" }}>
             {pageTitles[activeMenu]}
           </Title>
           <Space>

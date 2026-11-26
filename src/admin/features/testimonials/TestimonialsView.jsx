@@ -19,10 +19,7 @@ export default function TestimonialsView({ activeMenu, renderSearch, openModal, 
                     dataIndex: "avatarUrl",
                     width: 70,
                     render: (src) => (
-                      <Avatar
-                        size={44}
-                        src={src || "/media/placeholder.svg"}
-                      />
+                      <Avatar size={44} src={src || "/media/placeholder.svg"} />
                     ),
                   },
                   { title: "Phụ huynh", dataIndex: "parentName", render: (name) => <strong>{name}</strong> },
@@ -49,7 +46,7 @@ export default function TestimonialsView({ activeMenu, renderSearch, openModal, 
                       <Space>
                         <Button
                           type="text"
-                          icon={<EditOutlined style={{ color: "#34664e" }} />}
+                          icon={<EditOutlined style={{ color: "#880099" }} />}
                           onClick={() => openModal("testimonial", record)}
                         />
                         <Popconfirm

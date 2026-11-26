@@ -8,6 +8,8 @@ import * as submissionsApi from "../features/submissions/api.js";
 import * as teachersApi from "../features/teachers/api.js";
 import * as testimonialsApi from "../features/testimonials/api.js";
 import * as promotionsApi from "../features/promotions/api.js";
+import * as eventsApi from "../features/events/api.js";
+import * as pagesApi from "../features/pages/api.js";
 import { searchItems } from "../shared/adminUtils.js";
 
 export default function useAdminData({
@@ -24,6 +26,8 @@ export default function useAdminData({
   const [testimonials, setTestimonials] = useState([]);
   const [products, setProducts] = useState([]);
   const [promotions, setPromotions] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [managedPage, setManagedPage] = useState(null);
   const [searchTerms, setSearchTerms] = useState({});
   const [submissionStatusFilter, setSubmissionStatusFilter] = useState("all");
   const [submissionTypeFilter, setSubmissionTypeFilter] = useState("all");
@@ -44,6 +48,18 @@ export default function useAdminData({
         return;
       }
 
+      if (activeMenu === "aboutPage" || activeMenu === "enrollmentPage") {
+        setManagedPage(null);
+        const response = await pagesApi.getManagedPage(adminFetch, token, activeMenu);
+        if (response.ok) {
+          setManagedPage({ ...(await response.json()), pageKey: activeMenu });
+        } else {
+          const result = await response.json().catch(() => ({}));
+          setManagedPage({ pageKey: activeMenu, loadError: result.error || true });
+        }
+        return;
+      }
+
       const loaders = {
         submissions: submissionsApi.listSubmissions,
         contacts: submissionsApi.listSubmissions,
@@ -53,6 +69,7 @@ export default function useAdminData({
         testimonials: testimonialsApi.listTestimonials,
         products: productsApi.listProducts,
         promotions: promotionsApi.listPromotions,
+        events: eventsApi.listEvents,
       };
       const setters = {
         submissions: setSubmissions,
@@ -63,6 +80,7 @@ export default function useAdminData({
         testimonials: setTestimonials,
         products: setProducts,
         promotions: setPromotions,
+        events: setEvents,
       };
       const load = loaders[activeMenu];
       if (!load) return;
@@ -70,6 +88,9 @@ export default function useAdminData({
       const response = await load(adminFetch, token);
       if (response.ok) setters[activeMenu](await response.json());
     } catch (error) {
+      if (activeMenu === "aboutPage" || activeMenu === "enrollmentPage") {
+        setManagedPage({ pageKey: activeMenu, loadError: error.message || true });
+      }
       if (!error.sessionExpired) console.error("Fetch data error:", error);
     }
   }, [activeMenu, adminFetch, token]);
@@ -174,6 +195,17 @@ export default function useAdminData({
       "tier4",
       "tier5",
     ]),
+    filteredEvents: searchItems(events, searchTerms.events, [
+      "title",
+      "slug",
+      "location",
+      "summary",
+      "content",
+    ]),
+    managedPage,
+    adminFetch,
+    token,
+    fetchData,
   };
 
   return {
@@ -192,6 +224,9 @@ export default function useAdminData({
     setProducts,
     promotions,
     setPromotions,
+    events,
+    setEvents,
+    managedPage,
     fetchData,
     viewProps,
   };

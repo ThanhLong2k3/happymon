@@ -12,6 +12,8 @@ import { createSubmissionsRouter } from "./submissions.js";
 import { createTeachersRouter } from "./teachers.js";
 import { createTestimonialsRouter } from "./testimonials.js";
 import { createPromotionsRouter } from "./promotions.js";
+import { createEventsRouter } from "./events.js";
+import { createManagedPagesRouter } from "./pages.js";
 
 export function createAdminRouter({ database, root }) {
   const router = express.Router();
@@ -178,6 +180,8 @@ export function createAdminRouter({ database, root }) {
   router.use("/testimonials", createTestimonialsRouter({ database, adminAuthMiddleware }));
   router.use("/products", createProductsRouter({ database, adminAuthMiddleware }));
   router.use("/promotions", createPromotionsRouter({ database, adminAuthMiddleware }));
+  router.use("/events", createEventsRouter({ database, adminAuthMiddleware }));
+  router.use("/pages", createManagedPagesRouter({ database, adminAuthMiddleware }));
 
   return router;
 }

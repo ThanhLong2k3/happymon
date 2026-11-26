@@ -5,6 +5,7 @@ import ProgramFormFields from "./features/programs/ProgramFormFields.jsx";
 import ProductFormFields from "./features/products/ProductFormFields.jsx";
 import TestimonialFormFields from "./features/testimonials/TestimonialFormFields.jsx";
 import PromotionFormFields from "./features/promotions/PromotionFormFields.jsx";
+import EventFormFields from "./features/events/EventFormFields.jsx";
 
 const modalTitles = {
   teacher: { create: "Thêm Giáo viên mới", edit: "Chỉnh sửa Giáo viên" },
@@ -13,6 +14,7 @@ const modalTitles = {
   product: { create: "Thêm sản phẩm", edit: "Chỉnh sửa sản phẩm" },
   testimonial: { create: "Thêm Cảm nhận Phụ huynh", edit: "Chỉnh sửa Cảm nhận" },
   promotion: { create: "Tạo Chiến dịch Tuyển sinh & Ưu đãi mới", edit: "Chỉnh sửa Chiến dịch Tuyển sinh & Ưu đãi" },
+  event: { create: "Thêm sự kiện", edit: "Chỉnh sửa sự kiện" },
 };
 
 export default function AdminDataModal({
@@ -44,6 +46,7 @@ export default function AdminDataModal({
           {modalType === "product" && <ProductFormFields modalType={modalType} editingItem={editingItem} token={token} adminFetch={adminFetch} />}
           {modalType === "testimonial" && <TestimonialFormFields modalType={modalType} editingItem={editingItem} token={token} adminFetch={adminFetch} />}
           {modalType === "promotion" && <PromotionFormFields modalType={modalType} editingItem={editingItem} token={token} adminFetch={adminFetch} />}
+          {modalType === "event" && <EventFormFields token={token} adminFetch={adminFetch} />}
         <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 24 }}>
           <Button onClick={() => setModalVisible(false)}>Hủy bỏ</Button>
           <Button type="primary" htmlType="submit">Lưu thông tin</Button>

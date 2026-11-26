@@ -3,7 +3,7 @@ import { DeleteOutlined, EditOutlined, PhoneOutlined } from "@ant-design/icons";
 
 const contactStatuses = [
   { value: "new", label: "M\u1edbi nh\u1eadn", color: "red" },
-  { value: "contacted", label: "\u0110\u00e3 li\u00ean h\u1ec7", color: "blue" },
+  { value: "contacted", label: "\u0110\u00e3 li\u00ean h\u1ec7", color: "purple" },
   { value: "scheduled", label: "\u0110\u00e3 h\u1eb9n", color: "orange" },
   { value: "cancelled", label: "\u0110\u00e3 \u0111\u00f3ng", color: "default" },
 ];
@@ -100,7 +100,7 @@ export default function ContactMessagesView({
     <Card className="admin-card-table">
       <Space wrap style={{ marginBottom: 12 }}>
         {renderSearch("contacts", "T\u00ecm theo t\u00ean, s\u1ed1 \u0111i\u1ec7n tho\u1ea1i, email, l\u1eddi nh\u1eafn...")}
-        <Tag color="blue">{filteredContacts.length} tin nh\u1eafn</Tag>
+        <Tag color="purple">{filteredContacts.length} tin nh\u1eafn</Tag>
       </Space>
       <Table
         dataSource={filteredContacts}

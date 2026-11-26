@@ -96,7 +96,7 @@ export default function PromotionsView({
         <Space>
           <Button
             type="text"
-            icon={<EditOutlined style={{ color: "#34664e" }} />}
+            icon={<EditOutlined style={{ color: "#880099" }} />}
             onClick={() => openModal("promotion", record)}
           />
           <Popconfirm

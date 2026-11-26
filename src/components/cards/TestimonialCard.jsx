@@ -1,5 +1,6 @@
 import { Avatar, Rate } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { toRichHtml } from "../../utils/richContent.js";
 
 export default function TestimonialCard({ item }) {
   return (
@@ -25,7 +26,12 @@ export default function TestimonialCard({ item }) {
         defaultValue={item.rating || 5}
         style={{ fontSize: 14, color: "#e5bd61", marginBottom: 12 }}
       />
-      <blockquote>"{item.content || item.body || item.excerpt}"</blockquote>
+      <blockquote
+        className="rich-content"
+        dangerouslySetInnerHTML={{
+          __html: toRichHtml(item.content || item.body || item.excerpt || ""),
+        }}
+      />
     </div>
   );
 }

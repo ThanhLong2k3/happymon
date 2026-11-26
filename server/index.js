@@ -76,7 +76,7 @@ app.get("/api/testimonials", async (_request, response, next) => {
 app.get("/api/events", async (_request, response, next) => {
   try {
     const [events] = await database.query(
-      "SELECT id, title, slug, summary, content, featured_image AS featuredImage, DATE_FORMAT(event_date, '%Y-%m-%d %H:%i:%s') AS eventDate, location, status FROM events ORDER BY event_date DESC, id DESC"
+      "SELECT id, title, slug, summary, content, featured_image AS featuredImage, DATE_FORMAT(event_date, '%Y-%m-%d %H:%i:%s') AS eventDate, location, CASE WHEN event_date IS NULL THEN status WHEN DATE(event_date) > DATE(DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 HOUR)) THEN 'upcoming' WHEN DATE(event_date) = DATE(DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 HOUR)) THEN 'ongoing' ELSE 'completed' END AS status FROM events ORDER BY event_date DESC, id DESC"
     );
     response.json(events);
   } catch (error) {
@@ -195,7 +195,7 @@ app.get("/api/initial-data", async (_request, response, next) => {
       "SELECT id, parent_name AS parentName, slug, child_name AS childName, relationship, avatar_url AS avatarUrl, content, rating, display_order AS displayOrder FROM testimonials WHERE is_featured = 1 ORDER BY display_order ASC, id ASC"
     );
     const [events] = await database.query(
-      "SELECT id, title, slug, summary, content, featured_image AS featuredImage, DATE_FORMAT(event_date, '%Y-%m-%d %H:%i:%s') AS eventDate, location FROM events ORDER BY event_date DESC, id DESC"
+      "SELECT id, title, slug, summary, content, featured_image AS featuredImage, DATE_FORMAT(event_date, '%Y-%m-%d %H:%i:%s') AS eventDate, location, CASE WHEN event_date IS NULL THEN status WHEN DATE(event_date) > DATE(DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 HOUR)) THEN 'upcoming' WHEN DATE(event_date) = DATE(DATE_ADD(UTC_TIMESTAMP(), INTERVAL 7 HOUR)) THEN 'ongoing' ELSE 'completed' END AS status FROM events ORDER BY event_date DESC, id DESC"
     );
     const [posts] = await database.query(
       "SELECT id, title, slug, category, excerpt, body, featured_image AS featuredImage, DATE_FORMAT(published_at, '%Y-%m-%d %H:%i:%s') AS publishedAt, is_featured AS isFeatured FROM posts ORDER BY published_at DESC, id DESC"
